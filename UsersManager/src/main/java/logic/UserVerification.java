@@ -26,7 +26,7 @@ public class UserVerification extends HttpServlet {
     public static void addUser(int id,String username,String gmail,String pass) {
     	String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
         String user = "root"; // Replace with your database username
-        String password = "Mohan@1458"; // Replace with your database password
+        String password = "Mohan"; // Replace with your database password
 
         // JDBC variables for opening and managing connection
         Connection connection = null;
@@ -74,7 +74,7 @@ public class UserVerification extends HttpServlet {
     	// JDBC URL, username, and password of MySQL server
         String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
         String user = "root"; // Replace with your database username
-        String password = "Mohan@1458"; // Replace with your database password
+        String password = "Mohan"; // Replace with your database password
 
         // JDBC variables for opening and managing connection
         Connection connection = null;
@@ -122,7 +122,7 @@ public class UserVerification extends HttpServlet {
     	// JDBC URL, username, and password of MySQL server
         String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
         String user = "root"; // Replace with your database username
-        String password = "Mohan@1458"; // Replace with your database password
+        String password = "Mohan"; // Replace with your database password
 
         // JDBC variables for opening and managing connection
         Connection connection = null;
@@ -175,7 +175,7 @@ public class UserVerification extends HttpServlet {
     public static boolean checkUser(String email,String password1) {
     	  String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
           String user = "root"; // Replace with your database username
-          String password = "Mohan@1458";
+          String password = "Mohan";
           Connection connection = null;
           Statement statement = null;
           ResultSet resultSet = null ;
@@ -219,62 +219,61 @@ public class UserVerification extends HttpServlet {
           }return false;
           
     }
-//    public static List<User> getAllUsers(){
-//    	String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
-//        String user = "root"; // Replace with your database username
-//        String password = "Mohan@1458"; // Replace with your database password
-//        List<User> sl=new ArrayList();
-//        // JDBC variables for opening and managing connection
-//        
-//        Connection connection = null;
-//        Statement statement = null;
-//        ResultSet resultSet = null ;
-//        try {
-//            // 1. Open a connection
-//        	Class.forName("com.mysql.cj.jdbc.Driver");
-//            connection = DriverManager.getConnection(url, user, password);
-//            System.out.println("Connection established!");
-//
-//            // 2. Create a statement
-//            statement = connection.createStatement();
-//
-//            // 3. Execute a query
-//            String query = "SELECT * FROM user ";
-//            
-//            resultSet = statement.executeQuery(query);
-//
-//            // 4. Process the ResultSet object
-//            while (resultSet.next()) {
-//                // Assume mytable has columns id (int) and name (String)
-//                int id = resultSet.getInt("PatientId");
-//                String username= resultSet.getString("Patient Name");
-//                String pCondition=resultSet.getString("Patient Condition");
-//                String time= resultSet.getString("Appiontment Time");
-//                String assignedDoctor=resultSet.getString("Assigned Doctor");
-//                User s=new User(id,username,pCondition,time,assignedDoctor);
-//                sl.add(s);
-//            }
-//            return sl;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            // 5. Close the resources
-//            try {
-//            	if (resultSet != null) resultSet.close();
-//            	if (statement != null) statement.close();
-//                if (connection != null) connection.close();
-//                
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }return null;
-//
-//    }
+    public static List<User> getAllUsers(){
+    	String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
+        String user = "root"; // Replace with your database username
+        String password = "Mohan"; // Replace with your database password
+        List<User> sl=new ArrayList();
+        // JDBC variables for opening and managing connection
+        
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null ;
+        try {
+            // 1. Open a connection
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Connection established!");
+
+            // 2. Create a statement
+            statement = connection.createStatement();
+
+            // 3. Execute a query
+            String query = "SELECT * FROM user ";
+            
+            resultSet = statement.executeQuery(query);
+
+            // 4. Process the ResultSet object
+            while (resultSet.next()) {
+                // Assume mytable has columns id (int) and name (String)
+                int id = resultSet.getInt("userid");
+                String username= resultSet.getString("Email");
+                String pass=resultSet.getString("Pass");
+                String name= resultSet.getString("user_name");
+                User s=new User(id,name,username,pass);
+                sl.add(s);
+            }
+            return sl;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 5. Close the resources
+            try {
+            	if (resultSet != null) resultSet.close();
+            	if (statement != null) statement.close();
+                if (connection != null) connection.close();
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }return null;
+
+    }
     public static void register(int id,String username,String email,String pass) {
 
     	String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
         String user = "root"; // Replace with your database username
-        String password = "Mohan@1458";
+        String password = "Mohan";
     	Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null ;
@@ -321,7 +320,7 @@ public class UserVerification extends HttpServlet {
     public static void deleteUserByUsingId(int id) {
     	String url = "jdbc:mysql://localhost:3306/TRX_JFSD_03"; // Change "mydatabase" to your database name
         String user = "root"; // Replace with your database username
-        String password = "Mohan@1458";
+        String password = "Mohan";
     	Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null ;
